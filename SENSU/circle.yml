@@ -1,0 +1,4 @@
+dependencies:
+  override:
+    - scp -i ~/.ssh/config -rp /home/ubuntu/${CIRCLE_PROJECT_REPONAME} ubuntu@54.169.218.108:cookbooks
+    - ssh -i ~/.ssh/config ubuntu@54.169.218.108 bash -c "pushd /home/ubuntu/cookbooks/${CIRCLE_PROJECT_REPONAME};sudo kitchen test"
