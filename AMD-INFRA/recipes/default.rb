@@ -28,9 +28,9 @@ end
 
 aws_security_group node[:AMD_INFRA][:security_group] do
   vpc node[:AMD_INFRA][:vpc_name]
-  inbound_rules '0.0.0.0/0' => [ 22, 443, 80 ]
+  inbound_rules '0.0.0.0/0' => [ 22, 443, 80, 8000 ]
   # inbound_rules '0.0.0.0/0' => [ 22 ]
-  outbound_rules [ 80, 443, 22 ] => '0.0.0.0/0'
+  outbound_rules [ 80, 443, 22, 8000, 9418 ] => '0.0.0.0/0'
 end
 
 
@@ -39,7 +39,7 @@ with_machine_options({
     ssl_verify_mode: :verify_none,
     },
     bootstrap_options: {
-    image_id: "ami-d482da86", 
+    image_id: "ami-77a4b816", 
     instance_type: node[:AMD_INFRA][:instance_type],
     key_name: node[:AMD_INFRA][:key_name], 
     key_path: node[:AMD_INFRA][:key_path],
@@ -63,13 +63,13 @@ aws_route_table node[:AMD_INFRA][:route_table] do
   # aws_tags :chef_type => 'aws_route_table'
 end
 
-aws_subnet node[:AMD_INFRA][:aws_pvt_subnet] do
-  vpc node[:AMD_INFRA][:vpc_name]
-  cidr_block '173.0.1.0/24'
-  route_table node[:AMD_INFRA][:route_table]
-  availability_zone node[:AMD_INFRA][:availability_zone]
-  map_public_ip_on_launch false
-end
+# aws_subnet node[:AMD_INFRA][:aws_pvt_subnet] do
+#   vpc node[:AMD_INFRA][:vpc_name]
+#   cidr_block '173.0.1.0/24'
+#   route_table node[:AMD_INFRA][:route_table]
+#   availability_zone node[:AMD_INFRA][:availability_zone]
+#   map_public_ip_on_launch false
+# end
 
 # aws_route_table 'amd_route' do
 #   vpc 'analyticsmd_vpc'

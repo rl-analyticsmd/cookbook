@@ -1,0 +1,14 @@
+server {
+        listen       80;
+        
+              server_name _;
+
+		location / {          
+
+           <% @appserver.each do |webserver| -%>
+              proxy_pass http://<%= webserver['ipaddress'] -%>:8000;
+
+<% end -%>
+              proxy_redirect default;
+        }
+    }

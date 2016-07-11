@@ -1,0 +1,5 @@
+#!/usr/bin/expect -f
+spawn python manage.py resetDb
+expect "Are you SURE you want to do this? It will wipe EVERYTHING! (yes or no): "
+send "no\r"
+expect eof;
