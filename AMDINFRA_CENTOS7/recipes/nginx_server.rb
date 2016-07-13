@@ -20,7 +20,7 @@ with_machine_options({
     instance_type: node[:AMDINFRA_CENTOS7][:instance_type],
     key_name: node[:AMDINFRA_CENTOS7][:key_name], 
     key_path: node[:AMDINFRA_CENTOS7][:key_path],
-    subnet_id: node[:AMDINFRA_CENTOS7][:subnet_ID],
+    subnet_id: node[:AMDINFRA_CENTOS7][:pub_subnet_ID],
     security_group_ids: node[:AMDINFRA_CENTOS7][:sg_ID]
       },
   use_private_ip_for_ssh: false, 
@@ -29,6 +29,6 @@ with_machine_options({
 
 machine node[:AMDINFRA_CENTOS7][:nginx_machine_name] do
 	recipe 'AMD_nginx'
-  tag 'amd_ops'
+  tag 'amd_nginx'
   converge true
 end
