@@ -28,7 +28,7 @@ end
 
 aws_security_group node[:AMD_INFRA][:security_group] do
   vpc node[:AMD_INFRA][:vpc_name]
-  inbound_rules '0.0.0.0/0' => [ 22, 443, 80, 8000 ]
+  inbound_rules '0.0.0.0/0' => [ 22, 443, 80, 8000, 9418 ]
   # inbound_rules '0.0.0.0/0' => [ 22 ]
   outbound_rules [ 80, 443, 22, 8000, 9418 ] => '0.0.0.0/0'
 end
@@ -52,24 +52,25 @@ with_machine_options({
 })
 
 machine node[:AMD_INFRA][:instance_name] do
-  tag 'ops_analytics'
+  role 'nat_instance'
+  tag 'nat_instance1'
   # converge true
   # action :ready
 end 
 
 aws_route_table node[:AMD_INFRA][:route_table] do
   vpc node[:AMD_INFRA][:vpc_name]
-  routes '0.0.0.0/0' => 'analyticsmd_nat_instance'
+  routes '0.0.0.0/0' => 'analytics_nat_instance1'
   # aws_tags :chef_type => 'aws_route_table'
 end
 
-# aws_subnet node[:AMD_INFRA][:aws_pvt_subnet] do
-#   vpc node[:AMD_INFRA][:vpc_name]
-#   cidr_block '173.0.1.0/24'
-#   route_table node[:AMD_INFRA][:route_table]
-#   availability_zone node[:AMD_INFRA][:availability_zone]
-#   map_public_ip_on_launch false
-# end
+aws_subnet node[:AMD_INFRA][:aws_pvt_subnet] do
+  vpc node[:AMD_INFRA][:vpc_name]
+  cidr_block '173.0.1.0/24'
+  route_table node[:AMD_INFRA][:route_table]
+  availability_zone node[:AMD_INFRA][:availability_zone]
+  map_public_ip_on_launch false
+end
 
 # aws_route_table 'amd_route' do
 #   vpc 'analyticsmd_vpc'

@@ -8,8 +8,6 @@
 #
 
 
-
-
 execute 'update' do 
 	command "apt-get update -y"
 end
@@ -19,7 +17,14 @@ execute "nginx install" do
 end
 
 
-appserver = search(:node, 'role:"appserver"')
+execute "create SSL" do
+	command <<-EOF
+	openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/cert.key -out /etc/nginx/cert.crt -subj "/C=US/ST=SA/L=AMD/O=AMD/OU=IT Department/CN=`hostname`"
+	EOF
+end
+
+
+appserver = search(:node, 'tags:"medengineserver"')
 
 puts appserver.class
 
@@ -34,6 +39,7 @@ end
 execute 'move file' do
 	cwd '/etc/nginx/sites-enabled'
 	command "mv default /tmp"
+	only_if 'ls default', :cwd => '/etc/nginx/sites-enabled'
 end
 
 service 'nginx' do 
