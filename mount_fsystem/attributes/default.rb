@@ -1,0 +1,8 @@
+default[:mount_fsystem][:disk_name] = '/dev/xvdb'
+default[:mount_fsystem][:device_name] = '/dev/xvdb1'
+default[:mount_fsystem][:fs_type] = 'ext4'
+default[:mount_fsystem][:mount_point] = '/mnt/mysql'
+default[:mount_fsystem][:dir_owner] ='mysql'
+default[:mount_fsystem][:dir_mode] = '0755'
+default[:mount_fsystem][:group] = 'mysql'
+default[:mount_fsystem][:data_dir] = '/var/lib/mysql'

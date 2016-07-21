@@ -28,18 +28,19 @@ end
 
 aws_security_group node[:AMD_INFRA][:security_group] do
   vpc node[:AMD_INFRA][:vpc_name]
-  inbound_rules '0.0.0.0/0' => [ 22, 443, 80, 8000, 9418 ]
+  inbound_rules '0.0.0.0/0' => [ 22, 443, 80, 8000, 9418, 3306 ]
   # inbound_rules '0.0.0.0/0' => [ 22 ]
-  outbound_rules [ 80, 443, 22, 8000, 9418 ] => '0.0.0.0/0'
+  outbound_rules [ 80, 443, 22, 8000, 9418, 3306 ] => '0.0.0.0/0'
 end
 
 
 with_machine_options({
-	convergence_options: {
+    :source_dest_check => false,
+    convergence_options: {
     ssl_verify_mode: :verify_none,
     },
     bootstrap_options: {
-    image_id: "ami-77a4b816", 
+    image_id: node[:AMD_INFRA][:amd_image_id], 
     instance_type: node[:AMD_INFRA][:instance_type],
     key_name: node[:AMD_INFRA][:key_name], 
     key_path: node[:AMD_INFRA][:key_path],
@@ -53,14 +54,16 @@ with_machine_options({
 
 machine node[:AMD_INFRA][:instance_name] do
   role 'nat_instance'
-  tag 'nat_instance1'
+  tag 'nat_instance'
   # converge true
   # action :ready
 end 
 
+
+
 aws_route_table node[:AMD_INFRA][:route_table] do
   vpc node[:AMD_INFRA][:vpc_name]
-  routes '0.0.0.0/0' => 'analytics_nat_instance1'
+  routes '0.0.0.0/0' => 'analytics_nat_instance'
   # aws_tags :chef_type => 'aws_route_table'
 end
 
@@ -72,12 +75,4 @@ aws_subnet node[:AMD_INFRA][:aws_pvt_subnet] do
   map_public_ip_on_launch false
 end
 
-# aws_route_table 'amd_route' do
-#   vpc 'analyticsmd_vpc'
-#   routes {
-# main_routes '0.0.0.0/0' => 'analyticsmd_nat_instance'
-#   }
-
-#   # aws_tags :chef_type => 'aws_route_table'
-# end
-
+include_recipe "AMD_DB_SERVER:default"
