@@ -15,6 +15,7 @@ with_driver 'aws'
 aws_vpc node[:AMD_INFRA][:vpc_name] do
   cidr_block node[:AMD_INFRA][:cidr_block]
   main_routes '0.0.0.0/0' => :internet_gateway
+  instance_tenancy :dedicated
   internet_gateway true
 end
 
