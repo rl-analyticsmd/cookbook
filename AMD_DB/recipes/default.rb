@@ -25,10 +25,12 @@ execute "start mariadb" do
 	command "systemctl start mariadb.service"
 end
 
+db_server = search(:node, 'tags:"demo-db"').first
+
 execute "create database" do
 	command <<-EOF
-	echo "create database analyticsMD" | mysql
-	echo "grant all on analyticsMD.* to 'root'@'%' identified by 'root';" | mysql
+	echo "create database analyticsMD" | mysql -uroot -proot
+	echo "grant all on analyticsMD.* to 'root'@"#{db_server['ipaddress']}" identified by 'root';" | mysql
 	echo "flush privileges;" | mysql
 	EOF
 	not_if 'mysql -uroot -e "show databases" | grep analyticsMD'
