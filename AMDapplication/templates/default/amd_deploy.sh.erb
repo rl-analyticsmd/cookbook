@@ -1,0 +1,11 @@
+#!/usr/bin/expect -f
+spawn python amdConfig.py
+expect "Enter the deploy type for this machine: "
+send "local\r"
+expect "Enter the deploy client for this machine: "
+send "default\r"
+expect "Enter the properties settings to use for this machine: "
+send "default\r"
+expect "Enter the decryption key: "
+send "s4v3ThW0r!d\r"
+expect eof;
