@@ -46,6 +46,11 @@ template '/etc/httpd/conf.d/zabbix.conf' do
 	source 'zabbix_httpd.conf.erb'
 end
 
+# Need to restart httpd after touching it.
+execute "restart httpd after changing its config" do
+	systemctl restart httpd
+end
+
 
 service "zabbix-server" do
 supports :status => true, :restart => true, :reload => true
