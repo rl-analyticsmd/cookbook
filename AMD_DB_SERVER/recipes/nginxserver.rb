@@ -21,6 +21,6 @@ with_machine_options({
 machine node[:AMD_DB_SERVER][:nginx_machine_name] do
 	recipe 'AMD_nginx'
   # recipe 'newrelic'
-  tag 'amd_nginx'
+  tag node[:AMD_DB_SERVER][:nginx_tag]
   converge true
 end

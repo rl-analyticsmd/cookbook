@@ -1,4 +1,4 @@
-default['amd_infra_new']['vpc_name'] = 'amd_vpc'
+default['amd_infra_new']['vpc_name'] = 'analytics_vpctest'
 default['amd_infra_new']['cidr_block'] = '173.0.0.0/16'
 default['amd_infra_new']['aws_pub_subnet'] = 'amd_pub_subnet'
 default['amd_infra_new']['availability_zone'] = 'us-west-1a'

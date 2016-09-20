@@ -1,7 +1,7 @@
 #!/usr/bin/expect -f
 spawn python amdConfig.py
 expect "Enter the deploy type for this machine: "
-send "local\r"
+send "prod\r"
 expect "Enter the deploy client for this machine: "
 send "default\r"
 expect "Enter the properties settings to use for this machine: "

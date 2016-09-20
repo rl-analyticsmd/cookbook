@@ -23,6 +23,7 @@ with_machine_options({
     key_name: node[:amd_medengine][:key_name], 
     key_path: node[:amd_medengine][:key_path],
     subnet_id: node[:amd_medengine][:pvt_subnet_ID],
+    dedicated_tenancy: true,
     security_group_ids: node[:amd_medengine][:amd_db_sg]
       },
   ssh_username: "centos",

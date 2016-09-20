@@ -6,10 +6,10 @@ server {
 		location / {          
 
            <% @appserver.each do |webserver| -%>
-              proxy_pass http://<%= webserver['ipaddress'] -%>:8000;
+              fastcgi_pass <%= webserver['ipaddress'] -%>:8000;
 
 <% end -%>
-              proxy_redirect default;
+              
         }
     }
 
@@ -30,10 +30,10 @@ server {
     location / {          
 
            <% @appserver.each do |webserver| -%>
-              proxy_pass http://<%= webserver['ipaddress'] -%>:8000;
+              fastcgi_pass http://<%= webserver['ipaddress'] -%>:8000;
 
 <% end -%>
-              proxy_redirect default;
+              
         }       
 
 }

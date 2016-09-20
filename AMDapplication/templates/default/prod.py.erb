@@ -1,0 +1,86 @@
+# NOTE: This is suppose to be imported by another file.
+
+# Django settings for prototype project.
+DEBUG = False
+TEMPLATE_DEBUG = DEBUG
+
+DATABASES = {
+  'default': {
+    'ENGINE': 'django.db.backends.mysql',  # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+    'NAME': 'analyticsMD',                 # Or path to database file if using sqlite3.
+    'USER': 'root',                      # Not used with sqlite3.
+    'PASSWORD': 'root',
+    <% @dbserver.each do |server| -%>
+    'HOST': '<%= server['ipaddress'] -%>',
+    <% end -%>                             # Not used with sqlite3.
+                        # Set to empty string for localhost. Not used with sqlite3.
+    'PORT': '3306',                      # Set to empty string for default. Not used with sqlite3.
+  }
+}
+
+CACHES = {
+  "default": {
+    "BACKEND": "django_redis.cache.RedisCache",
+    "LOCATION": "redis://127.0.0.1:6379/1",
+    "OPTIONS": {
+      "CLIENT_CLASS": "django_redis.client.DefaultClient",
+    }
+  }
+}
+
+CACHEOPS_REDIS = {
+  'host': 'localhost',
+  'port': 6379,
+  'db': 1,
+  'socket_timeout': 3
+}
+
+CACHEOPS = {
+  'auth.user': {'ops': 'get', 'timeout': 60 * 15},
+  'auth.*': {'ops': ('fetch', 'get'), 'timeout': 60 * 60},
+
+  # The big guys.
+  'main.userprofile': {'ops': 'get', 'timeout': 60 * 60},
+  'main.hospital': {'ops': 'get', 'timeout': 60 * 60},
+  'main.metric': {'ops': 'get', 'timeout': 60 * 60},
+  'main.metricdefinition': {'ops': 'get', 'timeout': 60 * 60},
+
+  # Lesser models, but largely simple readonly ones.
+  'main.linearregressionmodel': {'ops': 'get', 'timeout': 60 * 60},
+  'main.importantcolumn': {'ops': 'get', 'timeout': 60 * 60},
+  'main.analysisfilters': {'ops': 'get', 'timeout': 60 * 60},
+  'main.analysisgroupbys': {'ops': 'get', 'timeout': 60 * 60},
+  'main.userprofile_hospitals': {'ops': 'get', 'timeout': 60 * 60},
+
+  # Decision models.
+  'decision.fitteddecisionmodel': {'ops': 'get', 'timeout': 60 * 60}
+}
+
+# URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
+# trailing slash.
+# Examples: "http://foo.com/media/", "/media/".
+ADMIN_MEDIA_PREFIX = '/statics/grappelli/'
+
+# List of callables that know how to import templates from various sources.
+TEMPLATE_LOADERS = (
+  ('django.template.loaders.cached.Loader', (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+#     'django.template.loaders.eggs.Loader',
+  )),
+)
+
+MIDDLEWARE_CLASSES = (
+  #'johnny.middleware.LocalStoreClearMiddleware',
+  #'johnny.middleware.QueryCacheMiddleware',
+  'django.middleware.common.CommonMiddleware',
+  'django.contrib.sessions.middleware.SessionMiddleware',
+  'django.middleware.csrf.CsrfViewMiddleware',
+  'django.contrib.auth.middleware.AuthenticationMiddleware',
+  'axes.middleware.FailedLoginMiddleware',
+  'django.contrib.messages.middleware.MessageMiddleware',
+  'main.middleware.ActiveUserMiddleware',
+  'main.middleware.InternalIPsOnly',
+  'bugsnag.django.middleware.BugsnagMiddleware',
+  'simple_history.middleware.HistoryRequestMiddleware',
+)

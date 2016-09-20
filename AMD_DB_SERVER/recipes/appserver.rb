@@ -2,7 +2,7 @@ require 'chef/provisioning/aws_driver'
 
 with_driver 'aws'
 
-nat_instance = search(:node, 'role:"nat_instance"').first
+nat_instance = search(:node, "tags:#{node['AMD_DB_SERVER']['nat_instance_tag']}").first
 
 puts "============================"
 puts "#{nat_instance['ec2']['public_ipv4']}"
@@ -30,8 +30,8 @@ with_machine_options({
 
 machine node[:AMD_DB_SERVER][:app_machine_name] do
   recipe 'AMDapplication'
-  recipe 'newrelic'
-  tag 'medengineappdemo'
+  # recipe 'newrelic'
+  tag node[:AMD_DB_SERVER][:app_tag]
   converge true
   # action :converge_only
 end

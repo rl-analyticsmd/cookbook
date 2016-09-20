@@ -28,19 +28,7 @@ cookbook_file '/etc/nginx/wildcard.key' do
   action :create
 end
 
-execute "create SSL" do
-	command <<-EOF
-	openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/cert.key -out /etc/nginx/cert.crt -subj "/C=US/ST=SA/L=AMD/O=AMD/OU=IT Department/CN=`hostname`"
-	EOF
-end
-
-execute "cocatnate certs" do
-	cwd '/etc/nginx'
-	command "cat cert.crt wildcard.crt >> bundle.crt"
-end
-
-
-appserver = search(:node, 'tags:"medengineappdemo"')
+appserver = search(:node, "tags:#{node['AMD_nginx']['tag']}")
 
 puts appserver.class
 

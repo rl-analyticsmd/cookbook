@@ -32,16 +32,16 @@ template "#{node[:AMDapplication][:amdapp_dir]}/AMD/medengine/requirements.txt" 
 	source 'requirements.txt.erb'
 end
 
-dbserver = search(:node, 'tags:"medenginedbserveramd"')
+dbserver = search(:node, "tags:#{node['AMDapplication']['dbserver_tag']}").first
 
 puts dbserver.class
 
-# template "#{node[:AMDapplication][:amdapp_dir]}/AMD/medengine/config/deployType/local.py" do
-# 	source 'local.py.erb'
-# 	variables(
-# 		:dbserver => dbserver
-# 		)
-# end
+template "#{node[:AMDapplication][:amdapp_dir]}/AMD/medengine/config/deployType/local.py" do
+	source 'prod.py.erb'
+	variables(
+		:dbserver => dbserver
+		)
+end
 
 # template "#{node[:AMDapplication][:amdapp_dir]}/AMD/medengine/settings.py" do
 # 	source 'settings.py.erb'
@@ -88,9 +88,9 @@ template "#{node[:AMDapplication][:amdapp_dir]}/AMD/medengine/amd_deploy.sh" do
 	mode '755'
 end
 
-template "#{node[:AMDapplication][:amdapp_dir]}/AMD/medengine/config/deploy.config.json" do
-	source 'deploy.config.json.erb'
-end
+# template "#{node[:AMDapplication][:amdapp_dir]}/AMD/medengine/config/deploy.config.json" do
+# 	source 'deploy.config.json.erb'
+# end
 
 
 execute "create virtual env" do
@@ -106,7 +106,7 @@ end
 execute "run resetdb" do
 	cwd "#{node[:AMDapplication][:amdapp_dir]}/AMD/medengine"
 	command ". #{node[:AMDapplication][:amdapp_dir]}/AMD/medengine/devlopment/bin/activate;yes yes | python manage.py resetDb"
-	not_if "mysql -uroot -e 'select * from main_metric' analyticsMD"
+	# not_if "mysql -h  -e 'select * from main_metric' analyticsMD"
 end
 
 execute "install bower" do

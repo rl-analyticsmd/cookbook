@@ -2,7 +2,7 @@ require 'chef/provisioning/aws_driver'
 
 with_driver 'aws'
 
-nat_instance = search(:node, 'role:"nat_instance"').first
+nat_instance = search(:node, "tags:#{node['AMD_DB_SERVER']['nat_instance_tag']}").first
 
 with_machine_options({
   convergence_options: {
@@ -23,10 +23,10 @@ with_machine_options({
     })
 
 machine node[:AMD_DB_SERVER][:db_machine_name] do
-  tag node[:AMD_DB_SERVER][:tag]
+  tag node[:AMD_DB_SERVER][:db_tag]
 end
 
-aws_ebs_volume 'amd_ebs_voltest1' do
+aws_ebs_volume node[:AMD_DB_SERVER][:ebs_volume] do
   machine node[:AMD_DB_SERVER][:db_machine_name]
   availability_zone 'c'
   size 20
@@ -39,7 +39,7 @@ end
 
 machine node[:AMD_DB_SERVER][:db_machine_name] do
   recipe 'AMD_DB'
-  recipe 'newrelic'
-  tag node[:AMD_DB_SERVER][:tag]
+  # recipe 'newrelic'
+  tag node[:AMD_DB_SERVER][:db_tag]
   converge true
 end

@@ -7,6 +7,6 @@
 # All rights reserved - Do Not Redistribute
 #
 
-# include_recipe "AMD_DB_SERVER::dbserver"
-# include_recipe "AMD_DB_SERVER::appserver"
+include_recipe "AMD_DB_SERVER::dbserver"
+include_recipe "AMD_DB_SERVER::appserver"
 include_recipe "AMD_DB_SERVER::nginxserver"

@@ -15,7 +15,6 @@ with_driver 'aws'
 aws_vpc node[:amd_infra_new][:vpc_name] do
   cidr_block node[:amd_infra_new][:cidr_block]
   main_routes '0.0.0.0/0' => :internet_gateway
-  instance_tenancy :dedicated
   internet_gateway true
 end
 
@@ -46,6 +45,7 @@ with_machine_options({
     key_name: node[:amd_infra_new][:key_name], 
     key_path: node[:amd_infra_new][:key_path],
     subnet_id: node[:amd_infra_new][:aws_pub_subnet],
+    # dedicated_tenancy: true,
     security_group_ids: node[:amd_infra_new][:security_group] 
       },
     ssh_username: "ec2-user",
