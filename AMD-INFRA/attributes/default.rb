@@ -1,4 +1,5 @@
-default[:AMD_INFRA][:pro_type]= 'test'
+default[:AMD_INFRA][:pro_type]= 'bng_test'
+default[:AMD_INFRA][:eip] = "#{node[:AMD_INFRA][:pro_type]}_eip"
 default['AMD_INFRA']['vpc_name'] = "#{node[:AMD_INFRA][:pro_type]}_analyticsmd_vpc"
 default['AMD_INFRA']['cidr_block'] = '173.0.0.0/16'
 default[:AMD_INFRA][:cidr_block_pub] = '173.0.0.0/24'
@@ -15,3 +16,4 @@ default['AMD_INFRA']['aws_pvt_subnet'] = "#{node[:AMD_INFRA][:pro_type]}_amd_pvt
 default['AMD_INFRA']['amd_image_id'] = 'ami-77a4b816'
 default[:AMD_INFRA][:role]= "#{node[:AMD_INFRA][:pro_type]}_nat_instance"
 default[:AMD_INFRA][:tag]= "#{node[:AMD_INFRA][:pro_type]}_nat_instance"
+default[:AMD_INFRA][:routes] = {'0.0.0.0/0' => "#{node[:AMD_INFRA][:instance_name]}"}

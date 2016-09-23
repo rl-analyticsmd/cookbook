@@ -32,14 +32,21 @@ template "#{node[:AMDapplication][:amdapp_dir]}/AMD/medengine/requirements.txt" 
 	source 'requirements.txt.erb'
 end
 
+execute 'start redis' do
+	command "service redis start"
+end
+
 dbserver = search(:node, "tags:#{node['AMDapplication']['dbserver_tag']}").first
 
-puts dbserver.class
+puts "============================"
+puts "#{dbserver['ipaddress']}"
+puts "============================"
 
-template "#{node[:AMDapplication][:amdapp_dir]}/AMD/medengine/config/deployType/local.py" do
+
+template "#{node[:AMDapplication][:amdapp_dir]}/AMD/medengine/config/deployType/prod.py" do
 	source 'prod.py.erb'
 	variables(
-		:dbserver => dbserver
+		:dbserver => "#{dbserver['ipaddress']}"
 		)
 end
 

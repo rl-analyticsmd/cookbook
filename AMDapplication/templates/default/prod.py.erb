@@ -10,11 +10,9 @@ DATABASES = {
     'NAME': 'analyticsMD',                 # Or path to database file if using sqlite3.
     'USER': 'root',                      # Not used with sqlite3.
     'PASSWORD': 'root',
-    <% @dbserver.each do |server| -%>
-    'HOST': '<%= server['ipaddress'] -%>',
-    <% end -%>                             # Not used with sqlite3.
-                        # Set to empty string for localhost. Not used with sqlite3.
-    'PORT': '3306',                      # Set to empty string for default. Not used with sqlite3.
+    'HOST': '<%= @dbserver -%>',                                   # Not used with sqlite3.
+    'PORT': '3306',       # Set to empty string for localhost. Not used with sqlite3.
+                          # Set to empty string for default. Not used with sqlite3.
   }
 }
 

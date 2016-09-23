@@ -46,7 +46,9 @@ with_machine_options({
     key_name: node[:AMD_INFRA][:key_name], 
     key_path: node[:AMD_INFRA][:key_path],
     subnet_id: node[:AMD_INFRA][:aws_pub_subnet],
-    security_group_ids: node[:AMD_INFRA][:security_group] 
+    security_group_ids: node[:AMD_INFRA][:security_group],
+    # associate_public_ip_address: false,
+    disable_api_termination: true 
       },
     ssh_username: "ec2-user",
     use_private_ip_for_ssh: false, 
@@ -57,12 +59,25 @@ machine node[:AMD_INFRA][:instance_name] do
   # role node[:AMD_INFRA][:role]
   tag node[:AMD_INFRA][:tag]
   # converge true
-  # action :ready
+  # action :allocate
+end 
+
+aws_eip_address node[:AMD_INFRA][:eip] do
+  machine node[:AMD_INFRA][:instance_name]
+  # associate_to_vpc true
+end
+
+machine node[:AMD_INFRA][:instance_name] do
+  # role node[:AMD_INFRA][:role]
+  tag node[:AMD_INFRA][:tag]
+  # converge true
+  # action :allocate
 end 
 
 aws_route_table node[:AMD_INFRA][:route_table] do
   vpc node[:AMD_INFRA][:vpc_name]
-  routes '0.0.0.0/0' => "'#{node[:AMD_INFRA][:instance_name]}'"
+  routes node[:AMD_INFRA][:routes]
+  # routes '0.0.0.0/0' => 'yale_test_analytics_nat_instance'
   # aws_tags :chef_type => 'aws_route_table'
 end
 

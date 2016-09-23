@@ -1,4 +1,5 @@
-default[:AMD_DB_SERVER][:pro_type] = 'test'
+default[:AMD_DB_SERVER][:pro_type] = 'bng_test'
+####################default Attributes###################
 default[:AMD_DB_SERVER][:db_ami_ID] = 'ami-c7d092f7'
 default[:AMD_DB_SERVER][:instance_type] = 't2.medium'
 default[:AMD_DB_SERVER][:key_name] = 'amdkeypair'
@@ -11,11 +12,11 @@ default[:AMD_DB_SERVER][:pub_subnet_ID] = "#{node[:AMD_DB_SERVER][:pro_type]}_am
 default[:AMD_DB_SERVER][:nat_instance_tag] = "#{node[:AMD_DB_SERVER][:pro_type]}_nat_instance"
 #################APPSERVER###############################
 default[:AMD_DB_SERVER][:app_tag] = "#{node[:AMD_DB_SERVER][:pro_type]}_amd_app"
-default[:AMD_DB_SERVER][:app_machine_name] = "#{node[:AMD_DB_SERVER][:pro_type]}_analyticsapp"
+default[:AMD_DB_SERVER][:app_machine_name] = "#{node[:AMD_DB_SERVER][:pro_type]}_analytics_app"
 
 #################DBSERVER#####################
 default[:AMD_DB_SERVER][:db_tag] = "#{node[:AMD_DB_SERVER][:pro_type]}_amd_db"
-default[:AMD_DB_SERVER][:db_machine_name] = "#{node[:AMD_DB_SERVER][:pro_type]}_analytics_app"
+default[:AMD_DB_SERVER][:db_machine_name] = "#{node[:AMD_DB_SERVER][:pro_type]}_analytics_db"
 default[:AMD_DB_SERVER][:ebs_volume] = "#{node[:AMD_DB_SERVER][:pro_type]}_amd_vol"
 #############NGINXSERVER####################
 default[:AMD_DB_SERVER][:nginx_machine_name] = "#{node[:AMD_DB_SERVER][:pro_type]}_amd_nginx"
