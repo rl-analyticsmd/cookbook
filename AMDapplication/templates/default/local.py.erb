@@ -1,0 +1,58 @@
+# NOTE: This is suppose to be imported by another file.
+
+# Django settings for prototype project.
+DEBUG = True
+TEMPLATE_DEBUG = DEBUG
+
+MOCHA_PHANTOM_TEST = False
+MOCHA_PHANTOM_TEST_USERNAME = 'brent'
+
+DATABASES = {
+  'default': {
+    'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+    'NAME': 'analyticsMD',
+    'USER': 'root',                      # Not used with sqlite3.
+    'PASSWORD': 'root',                  # Not used with sqlite3.
+    <% @dbserver.each do |server| -%>
+    'HOST': '<%= server['ipaddress'] -%>',
+    <% end -%>                      # Set to empty string for localhost. Not used with sqlite3.
+    'PORT': '3306',                      # Set to empty string for default. Not used with sqlite3.
+  }
+}
+
+CACHES = {
+  'default': {
+    'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+  }
+}
+
+# URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
+# trailing slash.
+# Examples: "http://foo.com/media/", "/media/".
+
+# List of callables that know how to import templates from various sources.
+#   - NO template caching
+TEMPLATE_LOADERS = (
+  'django.template.loaders.filesystem.Loader',
+  'django.template.loaders.app_directories.Loader',
+)
+
+MIDDLEWARE_CLASSES = (
+  'django.middleware.common.CommonMiddleware',
+  'django.contrib.sessions.middleware.SessionMiddleware',
+  'django.middleware.csrf.CsrfViewMiddleware',
+  'django.contrib.auth.middleware.AuthenticationMiddleware',
+  'axes.middleware.FailedLoginMiddleware',
+  'django.contrib.messages.middleware.MessageMiddleware',
+  #'proxier.middleware.ProxyMiddleware',
+  'main.middleware.ActiveUserMiddleware',
+  'main.middleware.InternalIPsOnly'
+)
+
+# Kind of a hack
+# - django has an issue if you excluded the domain in admin_media_prefix on
+#    debug mode with runserver. This shouldnt be necessary.
+# - alternative:
+#   python manage.py runserver --adminmedia=/PATH/TO/media/grappelli/
+# - more abstraction for settings needed to prevent hardcoding here.
+ADMIN_MEDIA_PREFIX = 'http://localhost:8000/statics/grappelli/'

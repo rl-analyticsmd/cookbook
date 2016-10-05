@@ -1,0 +1,19 @@
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_solo
+  
+verifier:
+  name: inspec
+  sudo: true
+
+platforms:
+  - name: centos-7.1
+  #- name: ubuntu-16.04
+   # run_list: apt::default
+
+suites:
+  - name: default
+    run_list:
+     recipe[fail2ban::default]
