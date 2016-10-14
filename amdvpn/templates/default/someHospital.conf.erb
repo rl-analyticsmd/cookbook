@@ -1,0 +1,28 @@
+# Connection for Mercynet                                                                                                                                                          
+conn mercynet
+     left=%defaultroute
+     leftid=52.88.230.36
+     leftsourceip=10.0.0.232
+     leftsubnet=10.0.0.232/32
+     right=170.29.64.13
+     rightsubnet=170.29.208.0/20 # For multiple subnets, use syntax rightsubnets={11.11.11/32,22.22.22/32}
+     rightsourceip=170.29.223.252
+     authby=secret
+     auto=start
+     compress=no
+     aggrmode=no
+     phase2=esp
+     phase2alg=aes256-sha1
+     ike=aes256-sha1-modp1536 # Depending on version, may need to use syntax aes256-sha1;modp1536
+     ikelifetime=24h
+     type=tunnel
+     pfs=no
+     salifetime=8h
+     dpdaction=restart
+     dpddelay=30
+     dpdtimeout=3600
+     forceencaps=yes
+     keyexchange=ike
+     keyingtries=3
+     disablearrivalcheck=no
+     rekey=yes

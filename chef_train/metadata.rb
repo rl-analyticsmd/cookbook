@@ -1,7 +1,0 @@
-name 'chef_train'
-maintainer 'The Authors'
-maintainer_email 'you@example.com'
-license 'all_rights'
-description 'Installs/Configures chef_train'
-long_description 'Installs/Configures chef_train'
-version '0.1.0'

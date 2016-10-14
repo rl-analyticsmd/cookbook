@@ -1,0 +1,174 @@
+I, [2016-10-14T15:15:26.803417 #8268]  INFO -- default-centos-71: -----> Creating <default-centos-71>...
+I, [2016-10-14T15:15:32.069887 #8268]  INFO -- default-centos-71: Bringing machine 'default' up with 'virtualbox' provider...
+I, [2016-10-14T15:15:32.502235 #8268]  INFO -- default-centos-71: ==> default: Importing base box 'bento/centos-7.1'...
+I, [2016-10-14T15:16:16.508926 #8268]  INFO -- default-centos-71: [KProgress: 20%[KProgress: 50%[KProgress: 70%[KProgress: 90%[K==> default: Matching MAC address for NAT networking...
+I, [2016-10-14T15:16:17.357829 #8268]  INFO -- default-centos-71: ==> default: Checking if box 'bento/centos-7.1' is up to date...
+I, [2016-10-14T15:16:22.151655 #8268]  INFO -- default-centos-71: ==> default: Setting the name of the VM: kitchen-amdvpn-default-centos-71_default_1476438382023_72336
+I, [2016-10-14T15:16:25.334711 #8268]  INFO -- default-centos-71: ==> default: Fixed port collision for 22 => 2222. Now on port 2200.
+I, [2016-10-14T15:16:25.478554 #8268]  INFO -- default-centos-71: ==> default: Clearing any previously set network interfaces...
+I, [2016-10-14T15:16:25.847530 #8268]  INFO -- default-centos-71: ==> default: Preparing network interfaces based on configuration...
+I, [2016-10-14T15:16:25.850464 #8268]  INFO -- default-centos-71:     default: Adapter 1: nat
+I, [2016-10-14T15:16:26.156458 #8268]  INFO -- default-centos-71: ==> default: Forwarding ports...
+I, [2016-10-14T15:16:26.594433 #8268]  INFO -- default-centos-71:     default: 22 (guest) => 2200 (host) (adapter 1)
+I, [2016-10-14T15:16:27.835748 #8268]  INFO -- default-centos-71: ==> default: Booting VM...
+I, [2016-10-14T15:16:38.671060 #8268]  INFO -- default-centos-71: ==> default: Waiting for machine to boot. This may take a few minutes...
+I, [2016-10-14T15:16:40.334380 #8268]  INFO -- default-centos-71:     default: SSH address: 127.0.0.1:2200
+I, [2016-10-14T15:16:40.336336 #8268]  INFO -- default-centos-71:     default: SSH username: vagrant
+I, [2016-10-14T15:16:40.338292 #8268]  INFO -- default-centos-71:     default: SSH auth method: private key
+I, [2016-10-14T15:17:13.077731 #8268]  INFO -- default-centos-71:     default: Warning: Remote connection disconnect. Retrying...
+I, [2016-10-14T15:17:20.495478 #8268]  INFO -- default-centos-71:     default: 
+I, [2016-10-14T15:17:20.495478 #8268]  INFO -- default-centos-71:     default: Vagrant insecure key detected. Vagrant will automatically replace
+I, [2016-10-14T15:17:20.496456 #8268]  INFO -- default-centos-71:     default: this with a newly generated keypair for better security.
+I, [2016-10-14T15:17:27.409489 #8268]  INFO -- default-centos-71:     default: 
+I, [2016-10-14T15:17:27.414378 #8268]  INFO -- default-centos-71:     default: Inserting generated public key within guest...
+I, [2016-10-14T15:17:28.568247 #8268]  INFO -- default-centos-71:     default: Removing insecure key from the guest if it's present...
+I, [2016-10-14T15:17:29.666115 #8268]  INFO -- default-centos-71:     default: Key inserted! Disconnecting and reconnecting using new SSH key...
+I, [2016-10-14T15:17:31.745468 #8268]  INFO -- default-centos-71: ==> default: Machine booted and ready!
+I, [2016-10-14T15:17:31.745468 #8268]  INFO -- default-centos-71: ==> default: Checking for guest additions in VM...
+I, [2016-10-14T15:17:32.001607 #8268]  INFO -- default-centos-71: ==> default: Setting hostname...
+I, [2016-10-14T15:17:34.760720 #8268]  INFO -- default-centos-71: ==> default: Machine not provisioned because `--no-provision` is specified.
+I, [2016-10-14T15:17:45.820453 #8268]  INFO -- default-centos-71: [SSH] Established
+I, [2016-10-14T15:17:45.821431 #8268]  INFO -- default-centos-71: Vagrant instance <default-centos-71> created.
+I, [2016-10-14T15:17:45.823384 #8268]  INFO -- default-centos-71: Finished creating <default-centos-71> (2m19.02s).
+I, [2016-10-14T15:17:45.824368 #8268]  INFO -- default-centos-71: -----> Converging <default-centos-71>...
+I, [2016-10-14T15:17:45.826318 #8268]  INFO -- default-centos-71: Preparing files for transfer
+I, [2016-10-14T15:17:45.827297 #8268]  INFO -- default-centos-71: Preparing dna.json
+I, [2016-10-14T15:17:45.829250 #8268]  INFO -- default-centos-71: Preparing current project directory as a cookbook
+I, [2016-10-14T15:17:45.866400 #8268]  INFO -- default-centos-71: Removing non-cookbook files before transfer
+I, [2016-10-14T15:17:45.882044 #8268]  INFO -- default-centos-71: Preparing solo.rb
+I, [2016-10-14T15:17:46.003268 #8268]  INFO -- default-centos-71: -----> Installing Chef Omnibus (install only if missing)
+I, [2016-10-14T15:17:46.014999 #8268]  INFO -- default-centos-71: Downloading https://www.chef.io/chef/install.sh to file /tmp/install.sh
+I, [2016-10-14T15:17:46.014999 #8268]  INFO -- default-centos-71: Trying wget...
+I, [2016-10-14T15:17:48.382803 #8268]  INFO -- default-centos-71: Download complete.
+I, [2016-10-14T15:17:48.730835 #8268]  INFO -- default-centos-71: el 7 x86_64
+I, [2016-10-14T15:17:48.730835 #8268]  INFO -- default-centos-71: Getting information for chef stable  for el...
+I, [2016-10-14T15:17:48.731813 #8268]  INFO -- default-centos-71: downloading https://www.chef.io/stable/chef/metadata?v=&p=el&pv=7&m=x86_64
+I, [2016-10-14T15:17:48.731813 #8268]  INFO -- default-centos-71:   to file /tmp/install.sh.6487/metadata.txt
+I, [2016-10-14T15:17:48.734751 #8268]  INFO -- default-centos-71: trying wget...
+I, [2016-10-14T15:17:51.266789 #8268]  INFO -- default-centos-71: sha1	cd53d4f6431e912d0ddafce3cabd113fec3dda05
+I, [2016-10-14T15:17:51.267766 #8268]  INFO -- default-centos-71: sha256	66a514699bddd3f507a3b80b687cd71079a09e2aa01fa8111bee7f06a95c44c7
+I, [2016-10-14T15:17:51.267766 #8268]  INFO -- default-centos-71: url	https://packages.chef.io/files/stable/chef/12.15.19/el/7/chef-12.15.19-1.el7.x86_64.rpm
+I, [2016-10-14T15:17:51.267766 #8268]  INFO -- default-centos-71: version	12.15.19
+I, [2016-10-14T15:17:51.282434 #8268]  INFO -- default-centos-71: downloaded metadata file looks valid...
+I, [2016-10-14T15:17:51.381174 #8268]  INFO -- default-centos-71: downloading https://packages.chef.io/files/stable/chef/12.15.19/el/7/chef-12.15.19-1.el7.x86_64.rpm
+I, [2016-10-14T15:17:51.382148 #8268]  INFO -- default-centos-71:   to file /tmp/install.sh.6487/chef-12.15.19-1.el7.x86_64.rpm
+I, [2016-10-14T15:17:51.384107 #8268]  INFO -- default-centos-71: trying wget...
+I, [2016-10-14T15:18:26.910604 #8268]  INFO -- default-centos-71: Comparing checksum with sha256sum...
+I, [2016-10-14T15:18:29.452421 #8268]  INFO -- default-centos-71: 
+I, [2016-10-14T15:18:29.453399 #8268]  INFO -- default-centos-71: WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING
+I, [2016-10-14T15:18:29.453399 #8268]  INFO -- default-centos-71: 
+I, [2016-10-14T15:18:29.453399 #8268]  INFO -- default-centos-71: You are installing an omnibus package without a version pin.  If you are installing
+I, [2016-10-14T15:18:29.453399 #8268]  INFO -- default-centos-71: on production servers via an automated process this is DANGEROUS and you will
+I, [2016-10-14T15:18:29.453399 #8268]  INFO -- default-centos-71: be upgraded without warning on new releases, even to new major releases.
+I, [2016-10-14T15:18:29.453399 #8268]  INFO -- default-centos-71: Letting the version float is only appropriate in desktop, test, development or
+I, [2016-10-14T15:18:29.454376 #8268]  INFO -- default-centos-71: CI/CD environments.
+I, [2016-10-14T15:18:29.454376 #8268]  INFO -- default-centos-71: 
+I, [2016-10-14T15:18:29.454376 #8268]  INFO -- default-centos-71: WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING
+I, [2016-10-14T15:18:29.454376 #8268]  INFO -- default-centos-71: 
+I, [2016-10-14T15:18:29.454376 #8268]  INFO -- default-centos-71: Installing chef 
+I, [2016-10-14T15:18:29.454376 #8268]  INFO -- default-centos-71: installing with rpm...
+I, [2016-10-14T15:18:30.066367 #8268]  INFO -- default-centos-71: warning: /tmp/install.sh.6487/chef-12.15.19-1.el7.x86_64.rpm: Header V4 DSA/SHA1 Signature, key ID 83ef826a: NOKEY
+I, [2016-10-14T15:18:33.735410 #8268]  INFO -- default-centos-71: Preparing...                                                            (100%)#                                 (100%)##                                (100%)###                               (100%)####                              (100%)#####                             (100%)######                            (100%)#######                           (100%)########                          (100%)#########                         (100%)##########                        (100%)###########                       (100%)############                      (100%)#############                     (100%)##############                    (100%)###############                   (100%)################                  (100%)#################                 (100%)##################                (100%)###################               (100%)####################              (100%)#####################             (100%)######################            (100%)#######################           (100%)########################          (100%)#########################         (100%)##########################        (100%)###########################       (100%)############################      (100%)#############################     (100%)##############################    (100%)###############################   (100%)################################  (100%)################################# (100%)################################# [100%]
+I, [2016-10-14T15:18:33.899624 #8268]  INFO -- default-centos-71: Updating / installing...
+I, [2016-10-14T15:19:24.164095 #8268]  INFO -- default-centos-71:                            (  1%)#                                 (  4%)##                                (  7%)###                               ( 10%)####                              ( 13%)#####                             ( 16%)######                            ( 19%)#######                           ( 22%)########                          ( 25%)#########                         ( 28%)##########                        ( 31%)###########                       ( 34%)############                      ( 37%)#############                     ( 40%)##############                    ( 43%)###############                   ( 46%)################                  ( 49%)#################                 ( 51%)##################                ( 54%)###################               ( 57%)####################              ( 60%)#####################             ( 63%)######################            ( 66%)#######################           ( 69%)########################          ( 72%)#########################         ( 75%)##########################        ( 78%)###########################       ( 81%)############################      ( 84%)#############################     ( 87%)##############################    ( 90%)###############################   ( 93%)################################  ( 96%)################################# ( 99%)################################# [100%]
+I, [2016-10-14T15:19:28.772608 #8268]  INFO -- default-centos-71: Thank you for installing Chef!
+I, [2016-10-14T15:19:30.535270 #8268]  INFO -- default-centos-71: Transferring files to <default-centos-71>
+I, [2016-10-14T15:19:39.999698 #8268]  INFO -- default-centos-71: Starting Chef Client, version 12.15.19
+I, [2016-10-14T15:19:47.251776 #8268]  INFO -- default-centos-71: Creating a new client identity for default-centos-71 using the validator key.
+I, [2016-10-14T15:19:48.147258 #8268]  INFO -- default-centos-71: resolving cookbooks for run list: ["amdvpn::default"]
+I, [2016-10-14T15:19:48.278260 #8268]  INFO -- default-centos-71: Synchronizing Cookbooks:
+I, [2016-10-14T15:19:48.359404 #8268]  INFO -- default-centos-71:   - amdvpn (0.1.0)
+I, [2016-10-14T15:19:48.359404 #8268]  INFO -- default-centos-71: Installing Cookbook Gems:
+I, [2016-10-14T15:19:48.359404 #8268]  INFO -- default-centos-71: Compiling Cookbooks...
+I, [2016-10-14T15:19:48.416105 #8268]  INFO -- default-centos-71: Converging 8 resources
+I, [2016-10-14T15:19:48.416105 #8268]  INFO -- default-centos-71: Recipe: amdvpn::default
+I, [2016-10-14T15:31:38.979854 #8268]  INFO -- default-centos-71: [2016-10-14T10:01:37+00:00] WARN: yum_package[openswan, lsof] matched multiple Provides for ["openswan", "lsof"] but we can only use the first match: libreswan. Please use a more specific version.
+I, [2016-10-14T15:32:56.401118 #8268]  INFO -- default-centos-71: 
+I, [2016-10-14T15:32:56.401991 #8268]  INFO -- default-centos-71:     - install version 4.87-4.el7 of package lsof
+I, [2016-10-14T15:32:56.401991 #8268]  INFO -- default-centos-71:     - install version 3.15-5.el7_1 of package libreswan
+I, [2016-10-14T15:32:56.896053 #8268]  INFO -- default-centos-71: 
+I, [2016-10-14T15:32:56.896950 #8268]  INFO -- default-centos-71:     - update content in file /etc/sysctl.conf from 5e4b8e to 6e8547
+I, [2016-10-14T15:32:56.896950 #8268]  INFO -- default-centos-71:     --- /etc/sysctl.conf	2015-03-06 03:05:10.000000000 +0000
+I, [2016-10-14T15:32:56.896950 #8268]  INFO -- default-centos-71:     +++ /etc/.chef-sysctl20161014-12490-2wg1js.conf	2016-10-14 10:02:55.545538187 +0000
+I, [2016-10-14T15:32:56.897988 #8268]  INFO -- default-centos-71:     @@ -2,4 +2,7 @@
+I, [2016-10-14T15:32:56.897988 #8268]  INFO -- default-centos-71:      # To override those settings, enter new settings here, or in an /etc/sysctl.d/<name>.conf file
+I, [2016-10-14T15:32:56.897988 #8268]  INFO -- default-centos-71:      #
+I, [2016-10-14T15:32:56.898947 #8268]  INFO -- default-centos-71:      # For more information, see sysctl.conf(5) and sysctl.d(5).
+I, [2016-10-14T15:32:56.898947 #8268]  INFO -- default-centos-71:     +net.ipv4.ip_forward=1
+I, [2016-10-14T15:32:56.899884 #8268]  INFO -- default-centos-71:     +net.ipv4.conf.all.accept_redirects=0
+I, [2016-10-14T15:32:57.090188 #8268]  INFO -- default-centos-71: 
+I, [2016-10-14T15:32:57.124698 #8268]  INFO -- default-centos-71: 
+I, [2016-10-14T15:32:57.254349 #8268]  INFO -- default-centos-71: 
+I, [2016-10-14T15:32:57.266235 #8268]  INFO -- default-centos-71: 
+I, [2016-10-14T15:32:57.267212 #8268]  INFO -- default-centos-71:   * directory[/etc/ipsec.d] action create (up to date)
+I, [2016-10-14T15:32:57.311308 #8268]  INFO -- default-centos-71: 
+I, [2016-10-14T15:32:57.312286 #8268]  INFO -- default-centos-71:     - create new file /etc/ipsec.d/someHospital.conf
+I, [2016-10-14T15:32:57.312286 #8268]  INFO -- default-centos-71:     - update content in file /etc/ipsec.d/someHospital.conf from none to 917a8b
+I, [2016-10-14T15:32:57.312286 #8268]  INFO -- default-centos-71:     --- /etc/ipsec.d/someHospital.conf	2016-10-14 10:02:55.989760187 +0000
+I, [2016-10-14T15:32:57.312286 #8268]  INFO -- default-centos-71:     +++ /etc/ipsec.d/.chef-someHospital20161014-12490-1hlgcfm.conf	2016-10-14 10:02:55.987759187 +0000
+I, [2016-10-14T15:32:57.312286 #8268]  INFO -- default-centos-71:     @@ -1 +1,29 @@
+I, [2016-10-14T15:32:57.312286 #8268]  INFO -- default-centos-71:     +# Connection for Mercynet                                                                                                                                                          
+I, [2016-10-14T15:32:57.313263 #8268]  INFO -- default-centos-71:     +conn mercynet
+I, [2016-10-14T15:32:57.313263 #8268]  INFO -- default-centos-71:     +     left=%defaultroute
+I, [2016-10-14T15:32:57.313263 #8268]  INFO -- default-centos-71:     +     leftid=52.88.230.36
+I, [2016-10-14T15:32:57.313263 #8268]  INFO -- default-centos-71:     +     leftsourceip=10.0.0.232
+I, [2016-10-14T15:32:57.313263 #8268]  INFO -- default-centos-71:     +     leftsubnet=10.0.0.232/32
+I, [2016-10-14T15:32:57.313263 #8268]  INFO -- default-centos-71:     +     right=170.29.64.13
+I, [2016-10-14T15:32:57.314240 #8268]  INFO -- default-centos-71:     +     rightsubnet=170.29.208.0/20 # For multiple subnets, use syntax rightsubnets={11.11.11/32,22.22.22/32}
+I, [2016-10-14T15:32:57.314240 #8268]  INFO -- default-centos-71:     +     rightsourceip=170.29.223.252
+I, [2016-10-14T15:32:57.314240 #8268]  INFO -- default-centos-71:     +     authby=secret
+I, [2016-10-14T15:32:57.314240 #8268]  INFO -- default-centos-71:     +     auto=start
+I, [2016-10-14T15:32:57.314240 #8268]  INFO -- default-centos-71:     +     compress=no
+I, [2016-10-14T15:32:57.315212 #8268]  INFO -- default-centos-71:     +     aggrmode=no
+I, [2016-10-14T15:32:57.315212 #8268]  INFO -- default-centos-71:     +     phase2=esp
+I, [2016-10-14T15:32:57.315212 #8268]  INFO -- default-centos-71:     +     phase2alg=aes256-sha1
+I, [2016-10-14T15:32:57.315212 #8268]  INFO -- default-centos-71:     +     ike=aes256-sha1-modp1536 # Depending on version, may need to use syntax aes256-sha1;modp1536
+I, [2016-10-14T15:32:57.315212 #8268]  INFO -- default-centos-71:     +     ikelifetime=24h
+I, [2016-10-14T15:32:57.315212 #8268]  INFO -- default-centos-71:     +     type=tunnel
+I, [2016-10-14T15:32:57.316192 #8268]  INFO -- default-centos-71:     +     pfs=no
+I, [2016-10-14T15:32:57.316192 #8268]  INFO -- default-centos-71:     +     salifetime=8h
+I, [2016-10-14T15:32:57.316192 #8268]  INFO -- default-centos-71:     +     dpdaction=restart
+I, [2016-10-14T15:32:57.316192 #8268]  INFO -- default-centos-71:     +     dpddelay=30
+I, [2016-10-14T15:32:57.316192 #8268]  INFO -- default-centos-71:     +     dpdtimeout=3600
+I, [2016-10-14T15:32:57.316192 #8268]  INFO -- default-centos-71:     +     forceencaps=yes
+I, [2016-10-14T15:32:57.317170 #8268]  INFO -- default-centos-71:     +     keyexchange=ike
+I, [2016-10-14T15:32:57.317170 #8268]  INFO -- default-centos-71:     +     keyingtries=3
+I, [2016-10-14T15:32:57.317170 #8268]  INFO -- default-centos-71:     +     disablearrivalcheck=no
+I, [2016-10-14T15:32:57.370450 #8268]  INFO -- default-centos-71: 
+I, [2016-10-14T15:32:57.371348 #8268]  INFO -- default-centos-71:     - restore selinux security context
+I, [2016-10-14T15:32:57.543006 #8268]  INFO -- default-centos-71: 
+I, [2016-10-14T15:32:57.543958 #8268]  INFO -- default-centos-71:     - update content in file /etc/ipsec.secrets from aee0b3 to b1e94f
+I, [2016-10-14T15:32:57.544964 #8268]  INFO -- default-centos-71:     --- /etc/ipsec.secrets	2015-11-03 20:15:45.000000000 +0000
+I, [2016-10-14T15:32:57.544964 #8268]  INFO -- default-centos-71:     +++ /etc/.chef-ipsec20161014-12490-9k8p3h.secrets	2016-10-14 10:02:56.240885687 +0000
+I, [2016-10-14T15:32:57.544964 #8268]  INFO -- default-centos-71:     @@ -1,2 +1,12 @@
+I, [2016-10-14T15:32:57.544964 #8268]  INFO -- default-centos-71:     -include /etc/ipsec.d/*.secrets
+I, [2016-10-14T15:32:57.545920 #8268]  INFO -- default-centos-71:     +# This file holds shared secrets or RSA private keys for inter-Pluto
+I, [2016-10-14T15:32:57.545920 #8268]  INFO -- default-centos-71:     +# authentication.  See ipsec_pluto(8) manpage, and HTML documentation.
+I, [2016-10-14T15:32:57.545920 #8268]  INFO -- default-centos-71:     +
+I, [2016-10-14T15:32:57.545920 #8268]  INFO -- default-centos-71:     +# RSA private key for this host, authenticating it to any other host
+I, [2016-10-14T15:32:57.545920 #8268]  INFO -- default-centos-71:     +# which knows the public part.  Suitable public keys, for ipsec.conf, DNS,
+I, [2016-10-14T15:32:57.545920 #8268]  INFO -- default-centos-71:     +# or configuration of other implementations, can be extracted conveniently
+I, [2016-10-14T15:32:57.545920 #8268]  INFO -- default-centos-71:     +# with "ipsec showhostkey".
+I, [2016-10-14T15:32:57.546896 #8268]  INFO -- default-centos-71:     +
+I, [2016-10-14T15:32:57.546896 #8268]  INFO -- default-centos-71:     +# this file is managed with debconf and will contain the automatically created RSA keys
+I, [2016-10-14T15:32:57.546896 #8268]  INFO -- default-centos-71:     +include /var/lib/openswan/ipsec.secrets.inc
+I, [2016-10-14T15:32:57.624399 #8268]  INFO -- default-centos-71: 
+I, [2016-10-14T15:32:57.625378 #8268]  INFO -- default-centos-71:     - restore selinux security context
+I, [2016-10-14T15:32:58.341952 #8268]  INFO -- default-centos-71: 
+I, [2016-10-14T15:32:58.341952 #8268]  INFO -- default-centos-71:     - enable service service[ipsec]
+I, [2016-10-14T15:33:02.762414 #8268]  INFO -- default-centos-71: 
+I, [2016-10-14T15:33:02.762414 #8268]  INFO -- default-centos-71:     - start service service[ipsec]
+I, [2016-10-14T15:33:03.492874 #8268]  INFO -- default-centos-71: 
+I, [2016-10-14T15:33:03.493846 #8268]  INFO -- default-centos-71:     - execute sudo iptables -I INPUT -s 11.111.11.111 -j ACCEPT
+I, [2016-10-14T15:33:04.103100 #8268]  INFO -- default-centos-71: 
+I, [2016-10-14T15:33:04.104077 #8268]  INFO -- default-centos-71: Running handlers:
+I, [2016-10-14T15:33:04.104077 #8268]  INFO -- default-centos-71: Running handlers complete
+I, [2016-10-14T15:33:04.104077 #8268]  INFO -- default-centos-71: 
+I, [2016-10-14T15:33:04.104077 #8268]  INFO -- default-centos-71: Deprecated features used!
+I, [2016-10-14T15:33:04.104077 #8268]  INFO -- default-centos-71:   Cloning resource attributes for execute[command] from prior resource (CHEF-3694)
+I, [2016-10-14T15:33:04.105055 #8268]  INFO -- default-centos-71: Previous execute[command]: /tmp/kitchen/cache/cookbooks/amdvpn/recipes/default.rb:38:in `from_file'
+I, [2016-10-14T15:33:04.105055 #8268]  INFO -- default-centos-71: Current  execute[command]: /tmp/kitchen/cache/cookbooks/amdvpn/recipes/default.rb:71:in `from_file' at 1 location:
+I, [2016-10-14T15:33:04.105055 #8268]  INFO -- default-centos-71:     - /tmp/kitchen/cache/cookbooks/amdvpn/recipes/default.rb:71:in `from_file'
+I, [2016-10-14T15:33:04.106040 #8268]  INFO -- default-centos-71: 
+I, [2016-10-14T15:33:04.106040 #8268]  INFO -- default-centos-71: Chef Client finished, 8/9 resources updated in 13 minutes 24 seconds
+I, [2016-10-14T15:33:07.890062 #8268]  INFO -- default-centos-71: Finished converging <default-centos-71> (15m22.06s).
